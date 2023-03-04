@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    background-image: url(sunset.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+
+.logo{
+    color: #ff7200;
+    font-size: 35px;
+}
+ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin-top: 1%;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+ul li a:hover{
+    color: #ff7200;
+}
+#btn1{
+    width: 60px;
+    height: 25px;
+    margin-left: 4px;
+    
+}
+#btn1,#btn2,#btn3{
+    border: 2px solid #ff7200;
+    background-color: #ff7200;
+    color: white;
+}
+#btn2{
+    width: 80px;
+    height: 40px;
+}
+.content{
+    padding-top: 100px;
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: white;
+    position: relative;
+}
+.par{
+    padding-bottom: 25px;
+    padding-top: 25px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+.form{
+    width: 230px;
+    height: 260px;
+    background-color: black ;
+    position: absolute;
+    
+    top: 110px;
+    left: 870px;
+    border-radius: 10px;
+    padding: 30px;
+}
+.form h2{
+    width: 220px;
+    text-align: center;
+}
+.form input{
+    width: 210px;
+    margin: 12px;
+    height: 30px;
+}
+#btn3{
+    width:215px ;
+    margin: 12px;
+    height: 30px;
+}
+.form p{
+    text-align: center;
+}
+.form h2:hover{
+    color: #ff7200;
+}
+h1{
+    color: black;
+}

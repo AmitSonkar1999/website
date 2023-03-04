@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<style>
+    table{
+        border: 2px solid black;
+        background-color: aqua;
+        
+    }
+    table{
+        width: 100%;
+        text-align: center;
+        border: 2px solid black;
+    }
+    #inp{
+        width: 100%;
+    }
+    td{
+        border: 2px solid black;
+    }
+    
+</style>
+
+<body>
+    <input id="inp" type="text" placeholder="search here">
+    <table>
+        <tr>
+            <th>select</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+        <hr>    
+        </tr>
+        
+        <tbody id="myTable">
+            
+
+        </tbody>
+    </table>
+    <!-- <table>
+        <tr>
+            <th>select</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Class</th>
+        </tr>
+        <tr>
+            <td id="h1"><input type="radio" ></td>
+            <td >101</td>
+            <td >Amit</td>
+            <td >51</td>
+        </tr>
+        <tr>
+            <td id="h2"><input type="radio" ></td>
+            <td >102</td>
+            <td >Ankush</td>
+            <td >54</td>
+        </tr>
+        <tr>
+            <td id="h3"><input type="radio" ></td>
+            <td >103</td>
+            <td >Sakshi</td>
+            <td >78</td>
+        </tr>
+        <tr>
+            <td id="h4"><input type="radio"></td>
+            <td >201</td>
+            <td>am</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td id="h5"><input type="radio"></td>
+            <td>501</td>
+            <td>Tarun</td>
+            <td>6</td>
+        </tr>
+
+    </table> -->
+
+</body>      
+<script>
+    var rr=[
+        {"id":"121","name":"ammy","age":"21","email":"amitsonkar1999@gmail.com"},
+        {"id":"122","name":"sonkar","age":"22","email":"amitsonkar1999@gmail.com"},
+        {"id":"123","name":"kriti","age":"23","email":"amitsonkar1999@gmail.com"},
+        {"id":"125","name":"shalini","age":"24","email":"amitsonkar1999@gmail.com"},
+        {"id":"126","name":"kumari","age":"24","email":"amitsonkar1999@gmail.com"},
+        {"id":"127","name":"kumod","age":"24","email":"amitsonkar1999@gmail.com"},
+        {"id":"128","name":"kyat","age":"24","email":"amitsonkar1999@gmail.com"},
+        {"id":"129","name":"gagan","age":"24","email":"amitsonkar1999@gmail.com"},
+        {"id":"130","name":"jyoti","age":"24","email":"amitsonkar1999@gmail.com"},
+        {"id":"131","name":"shilpa","age":"24","email":"amitsonkar1999@gmail.com"},
+        {"id":"132","name":"jagriti","age":"24","email":"amitsonkar1999@gmail.com"},
+        {"id":"133","name":"hemant","age":"24","email":"amitsonkar1999@gmail.com"},
+        {"id":"134","name":"jayent","age":"24","email":"amitsonkar1999@gmail.com"}
+    ]
+
+ $("#inp").on('keyup',function(){
+    var value=$(this).val()
+    var data=searchtable(value,rr)
+    buildtable(data)
+ })
+
+  buildtable(rr)
+
+function searchtable(value,data){
+    var filterdata=[]
+    for(var i=0;i<data.length;i++){
+        value=value.toLowerCase()
+        var name=data[i].name.toLowerCase()
+        if(name.includes(value)){
+            filterdata.push(data[i])
+        }
+    }
+    return filterdata
+
+}
+
+
+
+    function buildtable(data){
+      var table=document.getElementById('myTable')
+       table.innerHTML=''
+      for(var i=0;i<data.length;i++){
+        var row=`<tr>
+            <td><input type="radio"></td>
+            <td>${data[i].id}</td>
+            <td>${data[i].name}</td>
+            <td>${data[i].age}</td>
+            <td>${data[i].email}</td>
+            </tr>`
+            table.innerHTML +=row;
+           
+      }
+    }
+       function select(){
+
+
+       }
+
+    // $(document).ready(function () {
+        
+            
+    //         $("#h2").click(function(){
+    //             alert($(this).nextAll().text());
+    //         })
+    //         $("#h3").click(function(){
+    //             alert($(this).nextAll().text());
+    //         })
+    //         $("#h4").click(function(){
+    //             alert($(this).nextAll().text());
+    //         })
+    //         $("#h5").click(function(){
+    //             alert($(this).nextAll().text());
+    //         })
+        
+    // });
+
+
+    // $("#rad1").click(function(){
+    //     var a=$(".tr1").text();
+    //     alert(a)
+    // })
+    // $("#rad2").click(function(){
+    //     var b=$(".tr2").text();
+    //     alert(b)
+    // })
+    // $("#rad3").click(function(){
+    //     var c=$(".tr3").text();
+    //     alert(c)
+    // })
+
+
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+</head>
+
+<body>
+    <div class="main-div">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">Programiz</h2>
+                <ul>
+                    <li><a href="https://agilsyssoftware.com/"><i class="fa-solid fa-house"></i> HOME</a></li>
+                    <li><a href="https://www.g2.com/categories?q[category_type_eq]=service"><i class="fa-solid fa-users"></i> SERVICE</a></li>
+                    <li><a href="https://www.g2.com/best-software-companies/top-products"><i class="fa-solid fa-chart-simple"></i> PRODUCTS</a></li>
+                    <li><input id="sea" type="text" name="text" placeholder="search" style="width: 150px;height: 25px;">
+                        <a href="https://www.google.com"><button id="btn1">SEARCH</button></a>
+                    </li>
+                    <li><a href="https://agilsyssoftware.com/#3191a9c5-da31-45fd-8916-8a3d0bb06317"><i class="fa-regular fa-address-card"></i> ABOUT US</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="content">
+            <h1>Web Design & Development Course</h1>
+            <p class="par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum<br> error perspiciatis
+                consequatur ut quas
+                ea!<br> Quam dolores repellat ut rerum nihil amet corrupti sapiente,<br> quasi eligendi assumenda vero
+                cupiditate omnis!</p>
+            <button id="btn2"><a href="#">JOIN US</a></button>
+            <div class="form">
+                <h2>Login Here</h2>
+                <input type="email" name="email" placeholder="Enater Email Here">
+                <input type="password" placeholder="Enter Password Here">
+                <button id="btn3"><a href="#">Login</a></button>
+                <p>Don't have an account</p>
+                <p><a href="https:www.google.com">Sign up here</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $('#btn3').click(function () {
+            alert("Please fill correct Email and Password");
+        })  
+        $('#btn2').click(function(){
+         var a=   prompt('Enter your email id');
+          var b=  prompt('Enter your contact number');
+          alert(a+"  "+b);
+          alert('Your value is correct please press OK')
+          alert("Our team contact to you shortly !Thank you")
+          
+        })      
+    })
+    
+</script>
+
+</html>

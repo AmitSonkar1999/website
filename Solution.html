@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>  
+  <style>
+    table,tr,th,td{
+        border:2px solid black;
+    }
+  </style>
+</head>
+<body>
+    <table id="tab">
+        <tr>
+            <th>action</th>
+            <th>name</th>
+            <th>id</th>
+        </tr>
+    </table>
+    
+    <label for="">name</label>
+    <input type="text" id="name">
+    <label for="">id</label>
+    <input type="number" id="num">
+
+    <button onclick="add()">Add</button>
+    <label for="">Id to be deleted</label>
+    <input type="number" id="del_id">
+
+    <button onclick="del()">Delete</button>
+</body> 
+<script>
+    
+    // var v1,v2; //FOR_TABLE
+    var cond=0;
+    var arr=[];
+    function del()
+    {
+        var d=$("#del_id").val();
+        arr.forEach(function(value,index,arr)
+        {
+            // alert(value.id);
+            if(value.id==d){
+                cond++;
+                arr.splice(index,1);
+                alert(arr.length);
+                
+            }
+            // else{}
+        })
+        if(cond==0){alert("please enter coreect val");}
+    }
+    var text=""; //GLOBALLY VARIABLE
+    function add()
+    {
+        var obj={};
+        
+        var v1=$("#name").val();
+        var v2=$("#num").val();
+
+        obj.name=v1;
+        obj.id=v2;
+        arr.push(obj);
+        // alert(arr.length);
+        func();
+        $("#tab").append(text);
+        text="";
+    }
+    var count=0;
+    function func()
+    { text+=`<tr>
+        <td><input type="checkbox"></td>
+        <td>${arr[count].id}</td>
+        <td>${arr[count].name}</td>
+    </tr>`;
+    
+    count++;}
+</script>
+</html>

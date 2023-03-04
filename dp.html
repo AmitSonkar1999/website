@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Done-process</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body style="text-align: center;">
+    <h1>Create Data</h1>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+        ADD
+    </button>
+    <button id="Delete" onclick="del()">Delete</button>
+    <table style="width: 1000px;">
+        <thead id="th">
+            <h2> Store Data</h2>
+            <hr>
+            <tr>
+                <th><input type="checkbox" id="selectAll">ALL</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+        </tbody>
+    </table>
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                
+                <div class="modal-header">
+                    <h4 class="modal-title">Adding Details</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                
+                <div class="modal-body" style="text-align: center;">
+                    <div style="margin: 10px;">ID : <input type="number" name="" id="val1" placeholder="Id"></div>
+                    <div style="margin: 10px;">Name : <input type="text" name="" id="val2" placeholder="Name"></div>
+                </div>
+                
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="add()">Submit</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="myModal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Details</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                
+                <div class="modal-body" style="text-align: center;">
+                    <div><input type="text" name="" id="new_name" placeholder="Name"></div>
+                </div>
+                
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="add_new_details()">Submit</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+    var arr = [];
+    function del() {
+
+        var checked_array = $("tr").find(":checked");
+        // 1st LOOP
+        jQuery.each(checked_array, function (i, val) {
+            var checked_id = val.id;
+            var last_digit = checked_id.slice(-1);
+            var delete_id = parseInt($("#idd_" + last_digit).html());
+            // 2nd Loop
+            arr.forEach(function (value, index, arr) {
+                if ((value.id) == delete_id) {
+                    arr.splice(index, 1);
+                    $("#idd_" + last_digit).parents("tr").remove();
+                }
+            })
+            
+        })
+    }
+    var edited_index = 0;
+    function change(numm) {
+        edited_index = numm;
+    }
+
+    function add_new_details() {
+        var compare_val=parseInt($("#idd_"+edited_index).html());
+        
+        arr.forEach(function (value, index, arr) {
+            if ((value.id) == compare_val) {
+                
+                var new_value = $("#new_name").val();
+                arr[index].name = new_value
+                $("#namee_" + edited_index).text(new_value);
+                
+            }
+        })
+        
+    }
+
+    function add() {
+        var v1 = $("#val1").val();
+        var v2 = $("#val2").val();
+        $("#tb").append(new_row(v1, v2));
+        var obj = {};
+        obj.id = v1;
+        obj.name = v2;
+        arr.push(obj);
+        
+    }
+    var count = 0;
+    function new_row(v1, v2) {
+        count++;
+        return `<tr>
+            <td><input type="checkbox" id="chk_${count}"></td>
+            <td id="idd_${count}">${v1}</td>
+            <td id="namee_${count}">${v2}</td>
+            <td id="edit_${count}"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2" onclick="change(${count})">
+        Edit
+    </button></td>
+        </tr>`;
+    }
+    
+    $("#selectAll").click(function () {
+        $("#tb input[type=checkbox]").prop('checked', $(this).prop('checked'));
+    });
+</script>
+
+</html>
